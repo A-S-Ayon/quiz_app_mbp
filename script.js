@@ -139,7 +139,7 @@ function buildTable() {
     t2Cell.textContent = getTeamName('t2');
     tr.appendChild(t2Cell);
 
-    for (let i = 0; i < 8; i += 1) {
+    for (let j = 0; j < 8; j += 1) {
       tr.appendChild(document.createElement('td'));
     }
     tbody.appendChild(tr);
