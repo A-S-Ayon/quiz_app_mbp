@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>কুইজ অনুচিত্রণ</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <div class="app">
+      <h2 class="sr-only">Quiz competition scoresheet</h2>
+
+      <div class="header">
+        <div class="title">কুইজ অনুচিত্রণ</div>
+        <div class="round-info">
+          <input id="roundInput" placeholder="রাউন্ড নং" />
+          <input id="team1Input" placeholder="টিম ১ নাম" />
+          <input id="team2Input" placeholder="টিম ২ নাম" />
+        </div>
+      </div>
+
+      <div class="scores-bar">
+        <div class="team-score left">
+          <div class="team-name" id="t1Name">টিম ১</div>
+          <div class="team-points" id="t1Score">0</div>
+        </div>
+        <div class="vs-badge">VS</div>
+        <div class="team-score right">
+          <div class="team-name" id="t2Name">টিম ২</div>
+          <div class="team-points" id="t2Score">0</div>
+        </div>
+      </div>
+
+      <div class="table-wrap">
+        <table id="scoreTable">
+          <thead>
+            <tr>
+              <th rowspan="2">প্রশ্ন</th>
+              <th rowspan="2">দলের</th>
+              <th colspan="2" class="section">অপশন ছাড়া (+৫/−১)</th>
+              <th colspan="2" class="section">অপশন সহ (+৩/−২)</th>
+              <th class="section">পাস (০)</th>
+              <th colspan="2" class="section">চ্যালেঞ্জ বিপক্ষ (+৪/−৫)</th>
+              <th rowspan="2">অর্জিত</th>
+            </tr>
+            <tr>
+              <th>সঠিক</th>
+              <th>ভুল</th>
+              <th>সঠিক</th>
+              <th>ভুল</th>
+              <th>পাস</th>
+              <th>সঠিক</th>
+              <th>ভুল</th>
+            </tr>
+          </thead>
+          <tbody id="tbody"></tbody>
+        </table>
+      </div>
+
+      <div class="footer">
+        <button class="reset-btn" id="resetBtn" type="button">
+          <i class="ti ti-refresh" aria-hidden="true"></i> রিসেট
+        </button>
+      </div>
+
+      <div class="log-section">
+        <div class="log-title">লগ</div>
+        <ul class="log-list" id="logList"></ul>
+      </div>
+    </div>
+  </body>
+</html>
