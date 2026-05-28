@@ -118,14 +118,30 @@ function buildTable() {
   QUESTIONS.forEach((q, qi) => {
     const tr = document.createElement('tr');
     tr.id = `row_${qi}`;
-    tr.innerHTML = `
-      <td class="q-label" rowspan="1">${q}</td>
-      <td class="team-label">${getTeamName('t1')}</td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td>
-      <td class="team-label">${getTeamName('t2')}</td>
-      <td></td><td></td><td></td><td></td><td></td><td></td><td></td>
-      <td></td>`;
+
+    const qCell = document.createElement('td');
+    qCell.className = 'q-label';
+    qCell.rowSpan = 1;
+    qCell.textContent = q;
+    tr.appendChild(qCell);
+
+    const t1Cell = document.createElement('td');
+    t1Cell.className = 'team-label';
+    t1Cell.textContent = getTeamName('t1');
+    tr.appendChild(t1Cell);
+
+    for (let i = 0; i < 8; i += 1) {
+      tr.appendChild(document.createElement('td'));
+    }
+
+    const t2Cell = document.createElement('td');
+    t2Cell.className = 'team-label';
+    t2Cell.textContent = getTeamName('t2');
+    tr.appendChild(t2Cell);
+
+    for (let i = 0; i < 8; i += 1) {
+      tr.appendChild(document.createElement('td'));
+    }
     tbody.appendChild(tr);
     renderRow(qi);
   });
@@ -133,7 +149,13 @@ function buildTable() {
 
 function renderLog() {
   const ul = document.getElementById('logList');
-  ul.innerHTML = log.map((l) => `<li class="log-item">${l}</li>`).join('');
+  ul.innerHTML = '';
+  log.forEach((entry) => {
+    const li = document.createElement('li');
+    li.className = 'log-item';
+    li.textContent = entry;
+    ul.appendChild(li);
+  });
 }
 
 function resetAll() {
@@ -145,7 +167,7 @@ function resetAll() {
 }
 
 function handleTableClick(event) {
-  const button = event.target.closest('button[data-qi]');
+  const button = event.target.closest('button.mark-btn[data-qi]');
   if (!button) return;
   const qi = Number(button.dataset.qi);
   setMark(qi, button.dataset.team, button.dataset.type, button.dataset.result);

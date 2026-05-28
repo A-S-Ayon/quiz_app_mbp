@@ -73,14 +73,12 @@ body {
 }
 
 .team-score.left {
-  border-left: 3px solid #378add;
+  border-left: 3px solid #378ADD;
 }
 
 .team-score.right {
-  border-left: 3px solid #d85a30;
   text-align: right;
-  border-left: none;
-  border-right: 3px solid #d85a30;
+  border-right: 3px solid #D85A30;
 }
 
 .team-name {
@@ -168,15 +166,15 @@ td.q-label {
 }
 
 .mark-btn.active-correct {
-  background: #e1f5ee;
-  color: #0f6e56;
-  border-color: #5dcaa5;
+  background: #E1F5EE;
+  color: #0F6E56;
+  border-color: #5DCAA5;
 }
 
 .mark-btn.active-wrong {
-  background: #fcebeb;
-  color: #a32d2d;
-  border-color: #f09595;
+  background: #FCEBEB;
+  color: #A32D2D;
+  border-color: #F09595;
 }
 
 .mark-btn.active-pass {
@@ -191,11 +189,11 @@ td.q-label {
 }
 
 .score-pos {
-  color: #0f6e56;
+  color: #0F6E56;
 }
 
 .score-neg {
-  color: #a32d2d;
+  color: #A32D2D;
 }
 
 .score-zero {
