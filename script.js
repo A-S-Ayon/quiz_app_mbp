@@ -62,7 +62,13 @@ function setMark(qi, team, type, result) {
   }[type];
   const resultLabel = result === 'correct' ? '✓ সঠিক' : result === 'wrong' ? '✗ ভুল' : 'পাস';
   const m = state[key].marks;
-  log.unshift(`${qLabel} — ${tName} — ${typeLabel} — ${resultLabel} — ${m > 0 ? '+' : ''}${m}`);
+  log.unshift({
+    question: qLabel,
+    team: tName,
+    typeLabel,
+    resultLabel,
+    marks: m
+  });
   if (log.length > 30) log.pop();
   renderLog();
 }
@@ -153,7 +159,22 @@ function renderLog() {
   log.forEach((entry) => {
     const li = document.createElement('li');
     li.className = 'log-item';
-    li.textContent = entry;
+
+    const addSpan = (text) => {
+      const span = document.createElement('span');
+      span.textContent = text;
+      li.appendChild(span);
+    };
+
+    addSpan(entry.question);
+    li.appendChild(document.createTextNode(' — '));
+    addSpan(entry.team);
+    li.appendChild(document.createTextNode(' — '));
+    addSpan(entry.typeLabel);
+    li.appendChild(document.createTextNode(' — '));
+    addSpan(entry.resultLabel);
+    li.appendChild(document.createTextNode(' — '));
+    addSpan(`${entry.marks > 0 ? '+' : ''}${entry.marks}`);
     ul.appendChild(li);
   });
 }
